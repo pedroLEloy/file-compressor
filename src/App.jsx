@@ -109,7 +109,7 @@ export default function App() {
       <header className="header">
         <div>
           <h1>Compressor de Arquivos</h1>
-          <p className="subtitle">Arraste arquivos ou pastas — exporta .zip com DEFLATE</p>
+          <p className="subtitle">Combine arquivos e pastas no mesmo .zip</p>
         </div>
         {files.length > 0 && (
           <button onClick={reset} className="btn-ghost">↺ Limpar</button>
@@ -125,12 +125,15 @@ export default function App() {
         onClick={() => fileRef.current.click()}
       >
         <span className="drop-icon">⬆</span>
-        <p className="drop-title">Arraste arquivos ou clique para selecionar</p>
-        <p className="drop-hint">Suporta múltiplos arquivos e pastas inteiras</p>
+        <p className="drop-title">Arraste arquivos e/ou pastas aqui</p>
+        <p className="drop-hint">Você pode misturar arquivos soltos com pastas inteiras</p>
         <div className="drop-btns" onClick={e => e.stopPropagation()}>
-          <button onClick={() => fileRef.current.click()}>📄 Arquivos</button>
-          <button onClick={() => folderRef.current.click()}>📁 Pasta</button>
+          <button onClick={() => fileRef.current.click()}>📄 Adicionar arquivos</button>
+          <button onClick={() => folderRef.current.click()}>📁 Adicionar pasta</button>
         </div>
+        {files.length > 0 && (
+          <p className="drop-add-hint">Clique novamente para adicionar mais</p>
+        )}
       </div>
 
       <input ref={fileRef}   type="file" multiple              style={{ display: 'none' }} onChange={e => addFiles(e.target.files)} />
@@ -163,6 +166,15 @@ export default function App() {
               )
             })}
           </div>
+        </div>
+      )}
+
+      {/* Add more bar */}
+      {files.length > 0 && status !== 'done' && (
+        <div className="add-more-bar">
+          <span>Adicionar mais:</span>
+          <button onClick={() => fileRef.current.click()}>📄 Arquivos</button>
+          <button onClick={() => folderRef.current.click()}>📁 Pasta</button>
         </div>
       )}
 
