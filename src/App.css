@@ -324,3 +324,96 @@
   background: none;
   border-color: var(--border);
 }
+
+/* Analysis panel */
+.analysis-panel {
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1rem 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.type-bars { display: flex; flex-direction: column; gap: 8px; }
+
+.type-row {
+  display: grid;
+  grid-template-columns: 10px 130px 1fr auto;
+  align-items: center;
+  gap: 10px;
+  font-size: 13px;
+}
+
+.type-dot {
+  width: 10px; height: 10px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+.type-dot.sm { width: 8px; height: 8px; }
+.type-dot.text    { background: var(--green); }
+.type-dot.binary  { background: var(--red); }
+.type-dot.unknown { background: var(--yellow); }
+
+.type-label { color: var(--text2); }
+
+.type-bar-wrap {
+  height: 6px;
+  background: var(--bg3);
+  border-radius: 3px;
+  overflow: hidden;
+}
+.type-bar-fill {
+  height: 100%;
+  border-radius: 3px;
+  min-width: 4px;
+}
+.type-bar-fill.text    { background: var(--green); }
+.type-bar-fill.binary  { background: var(--red); }
+.type-bar-fill.unknown { background: var(--yellow); }
+
+.type-size { color: var(--text2); white-space: nowrap; font-size: 12px; }
+
+.compress-tag {
+  display: inline-block;
+  margin-left: 4px;
+  font-size: 11px;
+  color: var(--green);
+  background: rgba(34,197,94,0.1);
+  padding: 1px 5px;
+  border-radius: 3px;
+}
+.compress-tag.warn { color: var(--red); background: rgba(239,68,68,0.1); }
+
+.est-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 14px;
+  color: var(--text2);
+  padding-top: 4px;
+  border-top: 1px solid var(--border);
+}
+.est-arrow { color: var(--text3); }
+.est-result { font-size: 18px; font-weight: 600; color: var(--text); }
+.est-badge {
+  font-size: 12px;
+  color: var(--blue);
+  background: rgba(59,130,246,0.1);
+  padding: 2px 8px;
+  border-radius: 4px;
+  margin-left: auto;
+}
+
+.exp-note {
+  font-size: 13px;
+  padding: 8px 10px;
+  border-radius: var(--radius-sm);
+  border-left: 3px solid;
+}
+.exp-note.good { color: var(--green);  background: rgba(34,197,94,0.08);  border-color: var(--green); }
+.exp-note.warn { color: var(--yellow); background: rgba(245,158,11,0.08); border-color: var(--yellow); }
+.exp-note.info { color: var(--blue);   background: rgba(59,130,246,0.08); border-color: var(--blue); }
+
+.progress-hint { font-size: 12px; color: var(--text3); margin-top: 4px; }
